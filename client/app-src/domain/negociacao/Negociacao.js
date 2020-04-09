@@ -1,4 +1,4 @@
-class Negociacao {
+export class Negociacao {
     constructor (_data, _quantidade, _valor) {
         Object.assign(this, {
             _quantidade,

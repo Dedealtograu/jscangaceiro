@@ -1,4 +1,10 @@
-class NecociacaoController {
+import { Negociacoes, NegociacaoService, Negociacao } from '../domain/index';
+import { NegociacoesView, MensagemView, Mensagem, DataInvalidaException,
+    DateConverter } from '../ui/index';
+
+import { getNegociacaoDao, Bind } from '../util/index';
+
+export class NecociacaoController {
 
     constructor() {
         const $ = document.querySelector.bind(document);

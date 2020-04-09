@@ -1,3 +1,5 @@
+import { NecociacaoController } from './controllers/NegociacaoControlle';
+
 const controller = new NecociacaoController();
 
 const $ = document.querySelector.bind(document);
