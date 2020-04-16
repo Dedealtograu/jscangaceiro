@@ -1,10 +1,11 @@
 {
-    "presets": [
-        ["@babel/preset-env", {
-          "targets": {
-            "browsers": ["last 2 versions"]
-          }
-        }]
-    ],
-    //"plugins": ["transform-decorators-legacy"]
+  "presets": [
+    [
+      "@babel/preset-env", {
+        "targets": {
+          "node": "10"
+        }
+      }
+    ]
+  ]
 }

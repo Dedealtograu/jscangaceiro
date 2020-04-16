@@ -1,5 +1,6 @@
 import { HttpService } from '../../util/HttpService';
 import { Negociacao } from './Negociacao';
+import { ApplicationException } from '../../util/ApplicationException';
 
 export class NegociacaoService {
 
@@ -17,7 +18,7 @@ export class NegociacaoService {
             return negociacoes;
         },
         err => {
-            throw new Error('Não foi possível obter as negociações da semana');
+            throw new ApplicationException('Não foi possível obter as negociações da semana');
         })
 
     }
@@ -32,7 +33,7 @@ export class NegociacaoService {
                 return negociacoes;
             },
             err => {
-                throw new Error('Não foi possível obter as negociações da semana anterior');
+                throw new ApplicationException('Não foi possível obter as negociações da semana anterior');
             }
         );
     }
@@ -47,22 +48,24 @@ export class NegociacaoService {
                 return negociacoes;
             },
             err => {
-                throw new Error('Não foi possível obter as negociações da semana retrasada');
+                throw new ApplicationException('Não foi possível obter as negociações da semana retrasada');
             }
         );
     }
 
-    obterNegociacoesDoPeriodo() {
-        return Promise.all([
-            this.obterNegociacoesDaSemana(),
-            this.obterNegociacoesDaSemanaAnterior(),
-            this.obterNegociacoesDaSemanaRetrasada()
-        ]).then(periodo =>
-            periodo.reduce((novoArray, iten) => novoArray.concat(iten), [])
-                .sort((a, b) => b.data.getTime() - a.data.getTime())
-        ).catch(err => {
+    async obterNegociacoesDoPeriodo() {
+        try {
+            let periodo = await Promise.all([
+                this.obterNegociacoesDaSemana(),
+                this.obterNegociacoesDaSemanaAnterior(),
+                this.obterNegociacoesDaSemanaRetrasada()
+            ]);
+            return periodo.reduce((novoArray, item) => 
+                novoArray.concat(item), []).sort((a, b) => b.data.getTime() - a.data.getTime());
+
+        } catch (err) {
             console.log(err);
-            throw new Error('Não foi possível obter as negociações do período')
-        });
+            throw new ApplicationException('Não foi possível obter as negociações do período');
+        }
     }
 }
