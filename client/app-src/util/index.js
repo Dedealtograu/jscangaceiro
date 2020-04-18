@@ -4,4 +4,7 @@ export * from './ConnectionFactory';
 export * from './DaoFactory';
 export * from './HttpService';
 export * from './ProxyFactory';
-export * from './Debounce';
+export * from './decorators/Debounce';
+export * from './decorators/Controller';
+export * from './Obrigatorio';
+export * from './decorators/BindEvent';
