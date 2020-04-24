@@ -1,3 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/js/dist/modal';
+import '../css/meucss.css';
 import { NecociacaoController } from './controllers/NegociacaoControlle';
 import { Negociacao } from './domain/index';
 
@@ -15,5 +18,5 @@ const confing = {
     body
 };
 
-fetch('/negociacoes', confing)
+fetch('http://localhost:3000/negociacoes', confing)
     .then(() => console.log('Dados enviados com sucesso'));

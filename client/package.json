@@ -5,11 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-dev": "webpack --config webpack.config.js"
+    "build-dev": "webpack --config webpack.config.js",
+    "build-prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "start": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chunks-webpack-plugin": "^5.0.0",
+    "jquery": "^3.5.0",
+    "popper.js": "^1.16.1",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
@@ -19,7 +24,20 @@
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/preset-env": "^7.9.5",
     "babel-loader": "^8.1.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babili-webpack-plugin": "^0.1.2",
+    "bootstrap": "^4.4.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.5.2",
+    "cssnano": "^4.1.10",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "style-loader": "^1.1.4",
+    "url-loader": "^4.1.0",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }
